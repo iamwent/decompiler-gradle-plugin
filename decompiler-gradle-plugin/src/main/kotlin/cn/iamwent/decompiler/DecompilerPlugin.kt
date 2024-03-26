@@ -1,4 +1,4 @@
-package com.github.takahirom.decomposer
+package cn.iamwent.decompiler
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -8,27 +8,25 @@ import org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.File
 
-class DecomposerPlugin:Plugin<Project> {
+class DecompilerPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         project.tasks.withType<KotlinCompile>()
             .whenTaskAdded {
-                val kotlinCompileTask: KotlinCompile = this
-                this.doLast {
-                    val kotlinFiles = kotlinCompileTask.destinationDirectory.asFileTree.files
-                        .map{it.absolutePath}
-                    val output = File(project.buildDir,"decompiled").apply {
+                doLast {
+                    val kotlinFiles = destinationDirectory.asFileTree.files.map { it.absolutePath }
+                    val output = File(project.layout.buildDirectory.asFile.get(), "decompiled").apply {
                         deleteRecursively()
                         mkdir()
                     }
-                    val options: MutableList<String> = kotlinFiles.toMutableList()
-                        .apply{add(output.absolutePath)}
-                    ConsoleDecompiler.main(options.toTypedArray())
+                    val options = (kotlinFiles + output.absolutePath).toTypedArray()
+                    ConsoleDecompiler.main(options)
+
                     output.listFiles()
                         ?.filter { !it.readText().contains("androidx.compose") }
                         ?.forEach {
                             it.delete()
                         }
-                    logger.log(LogLevel.LIFECYCLE, "DecomposerPlugin: decomposed in ${output.path}")
+                    logger.log(LogLevel.LIFECYCLE, "DecompilerPlugin: decompiled in ${output.path}")
                 }
             }
     }

@@ -1,4 +1,4 @@
-# decomposer
+# decompiler-gradle-plugin
 Gradle Plugin that allows you to decompile bytecode compiled with Jetpack Compose Compiler Plugin into Java and check it
 
 # How to use
@@ -7,7 +7,7 @@ Gradle Plugin that allows you to decompile bytecode compiled with Jetpack Compos
 ## Run build
 
 ```
-> Task :uicomponent-compose:compileDebugKotlin
+> ./gradlew :app:compileDebugKotlin
 DecomposerPlugin: decomposed in /Users/takahirom/git/.../uicomponent-compose/build/decompile
 ```
 
