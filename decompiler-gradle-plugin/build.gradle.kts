@@ -20,7 +20,7 @@ tasks.test {
 
 tasks.jar {
     from(configurations.compileClasspath.get()
-        .filter { it.path.contains("fernflower.jar") }
+        .filter { it.path.contains("java-decompiler-engine") }
         .map { if (it.isDirectory) it else zipTree(it) })
 }
 
