@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
     java
     id("java-gradle-plugin")
-    id("maven")
+    `maven-publish`
 }
 
 repositories {
@@ -11,14 +11,13 @@ repositories {
     google()
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.23")
 }
 
 tasks.jar {
@@ -30,7 +29,7 @@ tasks.jar {
 
 gradlePlugin {
     plugins {
-        create("decomposer"){
+        create("decomposer") {
             id = "com.github.takahirom.decomposer"
             implementationClass = "com.github.takahirom.decomposer.DecomposerPlugin"
         }
