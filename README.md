@@ -1,5 +1,5 @@
 # Decompiler Gradle Plugin
-A Gradle plugin for decompiling bytecode into Java. It helps us dive into Jetpack Compose, Kotlin Coroutine, and more.
+A Gradle plugin for decompiling bytecodes into Java codes. It helps us dive into Jetpack Compose, Kotlin Coroutine, and more.
 
 The plugin was developed for research and learning purposes, utilizing the [Java Decompiler Engine](https://github.com/JetBrains/intellij-community/tree/master/plugins/java-decompiler/engine).
 

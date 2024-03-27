@@ -3,7 +3,11 @@ plugins {
     `maven-publish`
     `kotlin-dsl`
     kotlin("jvm")
+    id("com.gradle.plugin-publish") version "1.2.1"
 }
+
+group = PluginInfo.GROUP
+version = PluginInfo.VERSION_NAME
 
 dependencies {
     compileOnly(gradleApi())
@@ -70,6 +74,10 @@ publishing {
             }
         }
         repositories {
+            maven {
+                name = "localPluginRepository"
+                url = uri("build/repository")
+            }
             mavenLocal()
         }
     }
@@ -80,12 +88,16 @@ project(":decompiler-gradle-plugin") {
 }
 
 gradlePlugin {
+    website.set(PluginInfo.POM_URL)
+    vcsUrl.set(PluginInfo.POM_URL)
+
     plugins {
         create("decompilerGradlePlugin") {
             id = PluginInfo.GROUP
             implementationClass = PluginInfo.IMPLEMENTATION_CLASS
             displayName = PluginInfo.POM_NAME
             description = PluginInfo.POM_DESCRIPTION
+            tags.set(listOf("decompile", "jetpack compose", "kotlin coroutine"))
         }
     }
 }
@@ -98,7 +110,7 @@ object PluginInfo {
 
     const val POM_NAME = "Decompiler Gradle Plugin"
     const val POM_DESCRIPTION =
-        "Gradle Plugin that allows you to decompile bytecode compiled with Jetpack Compose Compiler Plugin into Java and check it."
+        "A Gradle plugin for decompiling bytecodes into Java codes. It helps us dive into Jetpack Compose, Kotlin Coroutine, and more."
     const val POM_URL = "https://github.com/iamwent/decompiler-gradle-plugin"
 
     const val POM_SCM_URL = "https://github.com/iamwent/decompiler-gradle-plugin"
