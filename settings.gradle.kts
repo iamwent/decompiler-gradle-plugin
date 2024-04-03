@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        google()
         mavenLocal()
         maven(url = "./plugin/build/repository")
         mavenCentral()

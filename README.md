@@ -5,45 +5,89 @@ The plugin was developed for research and learning purposes, utilizing the [Java
 
 
 ## Installation
-1. In your project's root `build.gradle` file:
+1. Add the plugin to your top-level build script:
 
-Groovy:
-```groovy
-buildscript {
-    dependencies {
-        classpath "cn.iamwent.decompiler.decompiler-gradle-plugin:decompiler-gradle-plugin:0.1.0"
-    }
+**`plugins`** block:
+
+<details open>
+<summary>Kotlin</summary>
+
+```kotlin
+plugins {
+    id("io.github.iamwent.decompiler") version "0.2.0"
 }
 ```
+</details>
 
-Kotlin:
+<details>
+<summary>Groovy</summary>
+```groovy
+plugins {
+  id "com.github.ben-manes.versions" version "$version"
+}
+```
+</details>
+
+or via the
+
+**`buildscript`** block:
+
+<details open>
+<summary>Kotlin</summary>
+
 ```kotlin
 buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
     dependencies {
-        classpath("io.github.iamwent.decompiler:decompiler-gradle-plugin:0.1.0")
+        classpath("io.github.iamwent.decompiler:decompiler-gradle-plugin:$version")
     }
 }
 ```
+</details>
 
-2. In your app-level `build.gradle` file:
+<details>
+<summary>Groovy</summary>
 
-Groovy:
+```groovy
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath "io.github.iamwent.decompiler:decompiler-gradle-plugin:$version"
+    }
+}
+```
+</details>
+
+2. Apply the plugin to your app-level build script:
+
+<details open>
+<summary>Kotlin</summary>
+
+```kotlin
+plugins {
+    id("io.github.iamwent.decompiler")
+}
+```
+</details>
+
+<details>
+<summary>Groovy</summary>
+
 ```groovy
 plugins {
     id 'io.github.iamwent.decompiler'
 }
 ```
+</details>
 
-Kotlin:
-```groovy
-plugins {
-    id("io.github.iamwent.decompiler")
-}
-```
-
-3. Run the command, and check the Java codes in: `app/build/decompiled`
+3. Run the `decompile` gradle task, and check the Java codes in: `app/build/decompiled`
 ```shell
-./gradlew :app:compileDebugKotlin
+./gradlew :app:decompile
 ```
 
 ## Credit

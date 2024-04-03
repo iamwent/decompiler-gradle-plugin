@@ -106,7 +106,7 @@ object PluginInfo {
     const val GROUP = "io.github.iamwent.decompiler"
     const val ARTIFACT_ID = "decompiler-gradle-plugin"
     const val IMPLEMENTATION_CLASS = "io.github.iamwent.decompiler.DecompilerPlugin"
-    const val VERSION_NAME = "0.1.0"
+    const val VERSION_NAME = "0.2.0"
 
     const val POM_NAME = "Decompiler Gradle Plugin"
     const val POM_DESCRIPTION =
