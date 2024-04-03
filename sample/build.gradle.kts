@@ -1,16 +1,16 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("cn.iamwent.decompiler.decompiler-gradle-plugin")
+    id("io.github.iamwent.decompiler")
 }
 
 android {
-    namespace = "cn.iamwent.decompiler.sample"
+    namespace = "io.github.iamwent.decompiler.sample"
     compileSdk = 34
     buildToolsVersion = "34.0.0"
 
     defaultConfig {
-        applicationId = "cn.iamwent.decompiler.sample"
+        applicationId = "io.github.iamwent.decompiler.sample"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

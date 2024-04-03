@@ -20,7 +20,7 @@ Kotlin:
 ```kotlin
 buildscript {
     dependencies {
-        classpath("cn.iamwent.decompiler.decompiler-gradle-plugin:decompiler-gradle-plugin:0.1.0")
+        classpath("io.github.iamwent.decompiler:decompiler-gradle-plugin:0.1.0")
     }
 }
 ```
@@ -30,14 +30,14 @@ buildscript {
 Groovy:
 ```groovy
 plugins {
-    id 'cn.iamwent.decompiler.decompiler-gradle-plugin'
+    id 'io.github.iamwent.decompiler'
 }
 ```
 
 Kotlin:
 ```groovy
 plugins {
-    id("cn.iamwent.decompiler.decompiler-gradle-plugin")
+    id("io.github.iamwent.decompiler")
 }
 ```
 
